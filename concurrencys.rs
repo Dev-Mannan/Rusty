@@ -10,7 +10,7 @@ use::std::time::Duration;
 fn main() {
     //  A thread is created using the thread::spawn() function
 
-    thread::spawn(|| {
+   let handle =  thread::spawn(|| {
         for i in 1..10 {
             println!("hi number {} from the spawned thread! this is running Parallelly", i);
             thread::sleep(Duration::from_millis(1));
@@ -26,4 +26,5 @@ fn main() {
         thread::sleep(Duration::from_millis(1));
 
 };
+    handle.join().unwrap(); //  Wait for the spawned thread to finish
 }
